@@ -34,3 +34,4 @@ def handler(event, context):
         cur.execute("select count(*) from %s" %(table_name))
         for row in cur:
             print(row)
+    return "function ran successfully"
