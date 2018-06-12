@@ -30,7 +30,9 @@ def handler(event, context):
         # cur.execute('insert into %s (EmpID, Name) values(2, "punchh2")'% (table_name))
         # cur.execute('insert into %s (EmpID, Name) values(3, "punchh3")'% (table_name))
         # conn.commit()
-        # cur.execute("select * from %s"% (table_name))
+        cur.execute("select * from %s"% (table_name))
+        for row in cur:
+            print(row)
         cur.execute('desc %s' %(table_name))
         for row in cur:
             print(row)
