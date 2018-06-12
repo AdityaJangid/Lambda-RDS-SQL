@@ -2,13 +2,6 @@ import sys
 import logging
 import pymysql
 import os
-#rds settings
-#  rds_host  = "mydbinstance.c2ufqyoeq3be.us-east-1.rds.amazonaws.com"
-#  name = "aditya"
-#  password = "aditya2018"
-#  db_name = "punchhDB"
-#  table_name = 'punchh'
-#
 rds_host  =     os.environ['endPoint']
 name =          os.environ['db_username']
 password =      os.environ['db_password']
@@ -38,6 +31,11 @@ def handler(event, context):
         # cur.execute('insert into %s (EmpID, Name) values(3, "punchh3")'% (table_name))
         # conn.commit()
         # cur.execute("select * from %s"% (table_name))
+        cur.execute('desc %s' %(table_name))
+        for row in cur:
+            print(row)
         cur.execute("select count(*) from %s" %(table_name))
         for row in cur:
             print(row)
+    return "function ran successfully"
+
