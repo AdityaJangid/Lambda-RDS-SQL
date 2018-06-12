@@ -8,7 +8,7 @@ name = "aditya"
 password = "aditya2018"
 db_name = "punchhDB"
 table_name = 'punchh'
-test_varialbe = os.environ(['TEST_VAR'])
+test_variable = os.environ(['TEST_VAR'])
 
 
 logger = logging.getLogger()
@@ -37,4 +37,4 @@ def handler(event, context):
         cur.execute("select count(*) from %s" %(table_name))
         for row in cur:
             print(row)
-    return test_varialbe
+    return test_variable
