@@ -3,13 +3,17 @@ import logging
 import pymysql
 import os
 #rds settings
-rds_host  = "mydbinstance.c2ufqyoeq3be.us-east-1.rds.amazonaws.com"
-name = "aditya"
-password = "aditya2018"
-db_name = "punchhDB"
-table_name = 'punchh'
-test_variable = os.environ(['TEST_VAR'])
-
+#  rds_host  = "mydbinstance.c2ufqyoeq3be.us-east-1.rds.amazonaws.com"
+#  name = "aditya"
+#  password = "aditya2018"
+#  db_name = "punchhDB"
+#  table_name = 'punchh'
+#
+rds_host  =     os.environ['endPoint']
+name =          os.environ['db_username']
+password =      os.environ['db_password']
+db_name =       os.environ['db_name']
+table_name =    os.environ['table_name']
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -37,4 +41,3 @@ def handler(event, context):
         cur.execute("select count(*) from %s" %(table_name))
         for row in cur:
             print(row)
-    return test_variable
