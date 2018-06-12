@@ -1,12 +1,14 @@
 import sys
 import logging
 import pymysql
+import os
 #rds settings
 rds_host  = "mydbinstance.c2ufqyoeq3be.us-east-1.rds.amazonaws.com"
 name = "aditya"
 password = "aditya2018"
 db_name = "punchhDB"
 table_name = 'punchh'
+test_varialbe = os.environ(['TEST_VAR'])
 
 
 logger = logging.getLogger()
@@ -24,6 +26,7 @@ def handler(event, context):
     This function fetches content from mysql RDS instance
     """
 
+
     with conn.cursor() as cur:
         # cur.execute("create table %s ( EmpID  int NOT NULL, Name varchar(255) NOT NULL, PRIMARY KEY (EmpID))" % (table_name))
         # cur.execute('insert into %s (EmpID, Name) values(1, "Punchh1")'% (table_name))
@@ -34,3 +37,4 @@ def handler(event, context):
         cur.execute("select count(*) from %s" %(table_name))
         for row in cur:
             print(row)
+    return test_varialbe
